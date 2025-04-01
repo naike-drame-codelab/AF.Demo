@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "AF.Demo": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7135",
+      "launchBrowser": false
+    }
+  }
+}
