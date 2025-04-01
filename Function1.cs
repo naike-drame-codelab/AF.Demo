@@ -14,7 +14,7 @@ namespace AF.Demo
     public class Function1
     {
         [FunctionName("Function1")]
-        public void Run([TimerTrigger("0 /5 * * * * ")] TimerInfo myTimer, ILogger log)
+        public void Run([TimerTrigger("0 */1 * * * * ")] TimerInfo myTimer, ILogger log)
         {
             try
             {
@@ -24,7 +24,7 @@ namespace AF.Demo
                 IConfigurationRoot config = builder.Build();
 
                 HttpResponseMessage message = client.PostAsJsonAsync(
-                    config["apiUrl"] + "/api/login", new { Username = config["username"], Password = config["password"] }).Result;
+                    config["apiUrl"] + "/api/login", new { Username = config["userusername"], Password = config["user:password"] }).Result;
                 if (message.IsSuccessStatusCode)
                 {
                     TokenDTO? tokenDto = message.Content.ReadFromJsonAsync<TokenDTO>().Result;
